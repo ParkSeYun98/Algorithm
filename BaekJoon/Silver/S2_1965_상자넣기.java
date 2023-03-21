@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class S2_상자넣기 {
+public class S2_1965_상자넣기 {
     private static int N;
     private static int max = Integer.MIN_VALUE;
 
