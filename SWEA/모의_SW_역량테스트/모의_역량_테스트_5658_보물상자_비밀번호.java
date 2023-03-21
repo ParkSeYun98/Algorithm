@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class 모의_역량_테스트_보물상자_비밀번호 {
+public class 모의_역량_테스트_5658_보물상자_비밀번호 {
     private static int N;
     private static int K;
     private static int result = 0;
