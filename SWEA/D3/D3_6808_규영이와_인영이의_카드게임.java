@@ -3,6 +3,7 @@ package SWEA.D3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class D3_6808_규영이와_인영이의_카드게임 {
