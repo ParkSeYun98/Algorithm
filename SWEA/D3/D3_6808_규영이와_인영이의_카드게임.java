@@ -12,7 +12,6 @@ public class D3_6808_규영이와_인영이의_카드게임 {
 
     private static int[] cardA;
     private static int[] cardB;
-    private static boolean[] splitCard;
     private static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
@@ -23,7 +22,7 @@ public class D3_6808_규영이와_인영이의_카드게임 {
 
         for(int tc=1; tc<=T; tc++) {
             cardA = new int[10];
-            splitCard = new boolean[19];
+            boolean[] splitCard = new boolean[19];
 
             st = new StringTokenizer(br.readLine(), " ");
             for(int i=1; i<=9; i++) {
