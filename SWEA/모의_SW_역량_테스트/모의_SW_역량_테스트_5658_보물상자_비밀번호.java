@@ -1,4 +1,4 @@
-package SWEA.모의_SW_역량테스트;
+package SWEA.모의_SW_역량_테스트;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class 모의_역량_테스트_5658_보물상자_비밀번호 {
+public class 모의_SW_역량_테스트_5658_보물상자_비밀번호 {
     private static int N;
     private static int K;
     private static int result = 0;

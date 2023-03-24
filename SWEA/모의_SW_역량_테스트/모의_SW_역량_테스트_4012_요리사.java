@@ -1,11 +1,11 @@
-package SWEA.모의_SW_역량테스트;
+package SWEA.모의_SW_역량_테스트;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 모의_역량_테스트_4012_요리사 {
+public class 모의_SW_역량_테스트_4012_요리사 {
     private static int N;
     private static int min;
 

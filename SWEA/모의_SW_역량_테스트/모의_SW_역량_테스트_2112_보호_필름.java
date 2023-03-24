@@ -1,11 +1,11 @@
-package SWEA.모의_SW_역량테스트;
+package SWEA.모의_SW_역량_테스트;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 모의_역량_테스트_2112_보호_필름_박세윤 {
+public class 모의_SW_역량_테스트_2112_보호_필름 {
     private static int D;
     private static int W;
     private static int K;
