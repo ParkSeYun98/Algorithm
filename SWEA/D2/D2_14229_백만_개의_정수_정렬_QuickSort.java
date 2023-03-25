@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class D2_14229_백만_개의_정수_정렬_QuickSort_박세윤 {
+public class D2_14229_백만_개의_정수_정렬_QuickSort {
     private static int[] arr;
 
     public static void main(String[] args) throws IOException {

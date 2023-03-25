@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class D2_14229_백만_개의_정수_정렬_Arrayssort_박세윤 {
+public class D2_14229_백만_개의_정수_정렬_Arrayssort {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
