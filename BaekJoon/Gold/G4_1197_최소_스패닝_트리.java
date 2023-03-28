@@ -9,9 +9,10 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class G4_1197_최소_스패닝_트리 {
-    public static int V;
-    public static int E;
-    public static int cnt;
+    private static int V;
+    private static int E;
+    private static int cnt;
+    private static int idx;
 
     public static List<Edge>[] graph;
 
@@ -64,6 +65,9 @@ public class G4_1197_최소_스패닝_트리 {
                 if(!visited[e.vertex])
                     pq.add(e);
             }
+
+            if(++idx == V)
+                break;
         }
     }
 
