@@ -3,6 +3,7 @@ package SWEA.D4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class D4_7465_창용_마을_무리의_개수 {
@@ -52,6 +53,8 @@ public class D4_7465_창용_마을_무리의_개수 {
             }
 
             System.out.println("#" + tc + " " + result);
+
+            System.out.println(Arrays.toString(parent));
         }
     }
 

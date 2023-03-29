@@ -15,6 +15,8 @@ public class G4_1753_최단경로 {
     private static int K;
 
     private static int[] distance;
+    private static boolean[] visited;
+
     private static List<Point> list[];
 
     public static void main(String[] args) throws IOException {
@@ -28,6 +30,7 @@ public class G4_1753_최단경로 {
 
         list = new ArrayList[V+1];
         distance = new int[V+1];
+        visited = new boolean[V+1];
 
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[K] = 0;
@@ -61,6 +64,11 @@ public class G4_1753_최단경로 {
 
         while(!pq.isEmpty()) {
             Point now = pq.poll();
+
+            if(visited[now.target])
+                continue;
+
+            visited[now.target] = true;
 
             for(Point next : list[now.target]) {
                 if(distance[next.target] > now.weight + next.weight) {
