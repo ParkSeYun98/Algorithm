@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class D4_1238_Concat {
+public class D4_1238_Contact {
     private static final int INF = Integer.MAX_VALUE;
 
     private static int N;
