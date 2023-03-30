@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class D4_1251_하나로 {
+public class D4_1251_하나로_크루스칼 {
     private static int N;
     private static double E;
 
