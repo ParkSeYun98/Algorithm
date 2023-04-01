@@ -3,7 +3,6 @@ package BaekJoon.Gold;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -14,13 +13,13 @@ public class G4_17144_미세먼지_안녕 {
     private static int T;
 
     // 우 상 좌 하
-    private static int[] dx = {0, -1, 0, 1};
-    private static int[] dy = {1, 0, -1, 0};
+    private static final int[] dx = {0, -1, 0, 1};
+    private static final int[] dy = {1, 0, -1, 0};
     private static Point[] airPurifier;
 
     private static int[][] house;
 
-    private static Queue<Point> queue = new LinkedList<>();
+    private static final Queue<Point> queue = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -53,11 +52,7 @@ public class G4_17144_미세먼지_안녕 {
     public static void Process() {
         int t = 0;
 
-        while(true) {
-            if(t == T) {
-                break;
-            }
-
+        while (t != T) {
             spreadReady();
 
             spread();
