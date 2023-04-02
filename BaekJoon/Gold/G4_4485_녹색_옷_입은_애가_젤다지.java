@@ -16,6 +16,7 @@ public class G4_4485_녹색_옷_입은_애가_젤다지 {
     private static final int[] dc = {1, -1, 0, 0};
 
     private static int[][] distance;
+    private static boolean[][] visited;
 
     private static int[][] map;
 
@@ -33,6 +34,7 @@ public class G4_4485_녹색_옷_입은_애가_젤다지 {
 
             map = new int[N][N];
             distance = new int[N][N];
+            visited = new boolean[N][N];
 
             for(int i=0; i<N; i++) {
                 st = new StringTokenizer(br.readLine(), " ");
@@ -55,6 +57,7 @@ public class G4_4485_녹색_옷_입은_애가_젤다지 {
             Arrays.fill(distance[i], INF);
 
         distance[0][0] = map[0][0];
+        visited[0][0] = true;
 
         while(!pq.isEmpty()) {
             Point now = pq.poll();
@@ -65,6 +68,11 @@ public class G4_4485_녹색_옷_입은_애가_젤다지 {
 
                 if(outofmapCheck(nextR, nextC))
                     continue;
+
+                if(visited[nextR][nextC])
+                    continue;
+
+                visited[nextR][nextC] = true;
 
                 if(distance[nextR][nextC] > distance[now.row][now.col] + map[nextR][nextC]) {
                     distance[nextR][nextC] = distance[now.row][now.col] + map[nextR][nextC];
