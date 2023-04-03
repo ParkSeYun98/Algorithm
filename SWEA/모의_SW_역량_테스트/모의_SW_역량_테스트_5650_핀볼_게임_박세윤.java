@@ -19,7 +19,6 @@ public class 모의_SW_역량_테스트_5650_핀볼_게임_박세윤 {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-
         int T = sc.nextInt();
 
         for(int tc=1; tc<=T; tc++) {
