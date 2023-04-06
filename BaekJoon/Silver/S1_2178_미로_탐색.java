@@ -1,4 +1,4 @@
-package BaekJoon.Gold;
+package BaekJoon.Silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,22 +7,20 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class G3_2206_벽_부수고_이동하기 {
+public class S1_2178_미로_탐색 {
     static int N;
     static int M;
-    static int min = Integer.MAX_VALUE;
 
-    static final int[] dr = {0, 0, 1, -1};
-    static final int[] dc = {1, -1, 0, 0};
+    static int[] dr = {0, 0, 1, -1};
+    static int[] dc = {1, -1, 0, 0};
 
     static int[][] maze;
-
-    static boolean[][][] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
@@ -36,25 +34,20 @@ public class G3_2206_벽_부수고_이동하기 {
         }
 
         BFS();
-
-        if(min == Integer.MAX_VALUE)
-            System.out.println(-1);
-        else
-            System.out.println(min);
     }
 
     static void BFS() {
         Queue<Point> queue = new LinkedList<>();
-        queue.offer(new Point(0, 0, 1, 1));
+        queue.offer(new Point(0, 0, 1));
 
-        visited = new boolean[N][M][2];
-        visited[0][0][1] = true;
+        boolean[][] visited = new boolean[N][M];
+        visited[0][0] = true;
 
         while(!queue.isEmpty()) {
             Point now = queue.poll();
 
             if(now.r == N-1 && now.c == M-1)
-                min = Math.min(min, now.distance);
+                System.out.println(now.cnt);
 
             for(int d=0; d<4; d++) {
                 int nextR = now.r + dr[d];
@@ -63,20 +56,14 @@ public class G3_2206_벽_부수고_이동하기 {
                 if(outofmapCheck(nextR, nextC))
                     continue;
 
-                if(visited[nextR][nextC][now.wallCnt])
+                if(wallCheck(nextR, nextC))
                     continue;
 
-                if(wallCheck(nextR, nextC)) {
-                    if(now.wallCnt == 1) {
-                        queue.offer(new Point(nextR, nextC, now.wallCnt-1, now.distance+1));
-                        visited[nextR][nextC][now.wallCnt-1] = true;
-                    }
-
+                if(visited[nextR][nextC])
                     continue;
-                }
 
-                queue.offer(new Point(nextR, nextC, now.wallCnt, now.distance+1));
-                visited[nextR][nextC][now.wallCnt] = true;
+                queue.offer(new Point(nextR, nextC, now.cnt+1));
+                visited[nextR][nextC] = true;
             }
         }
     }
@@ -86,20 +73,18 @@ public class G3_2206_벽_부수고_이동하기 {
     }
 
     static boolean wallCheck(int r, int c) {
-        return maze[r][c] == 1;
+        return maze[r][c] == 0;
     }
 
     static class Point {
         int r;
         int c;
-        int wallCnt;
-        int distance;
+        int cnt;
 
-        public Point(int r, int c, int wallCnt, int distance) {
+        public Point(int r, int c, int cnt) {
             this.r = r;
             this.c = c;
-            this.wallCnt = wallCnt;
-            this.distance = distance;
+            this.cnt = cnt;
         }
     }
 }

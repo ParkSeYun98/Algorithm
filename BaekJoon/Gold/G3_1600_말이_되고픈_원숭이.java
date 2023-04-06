@@ -8,20 +8,17 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class G3_1600_말이_되고픈_원숭이 {
-    private static int K;
-    private static int W;
-    private static int H;
-    private static int result;
+    static int K;
+    static int W;
+    static int H;
+    static int min = Integer.MAX_VALUE;
 
-    private static int[] dxMonkey = {0, 0, 1, -1};
-    private static int[] dyMonkey = {1, -1, 0, 0};
-    private static int[] dxHorse = {2, 2, -2, -2, 1, 1, -1, -1};
-    private static int[] dyHorse = {1, -1, 1, -1, 2, -2, 2, -2};
+    static final int[] monkeydr = {0, 0, 1, -1};
+    static final int[] monkeydc = {1, -1, 0, 0};
+    static final int[] horsedr = {2, 1, -2, -1, 2, 1, -2, -1};
+    static final int[] horsedc = {1, 2, -1, -2, -1, -2, 1, 2};
 
-    private static int[][] world;
-    private static boolean[][][] visited;
-
-    private static Queue<Point> queue;
+    static int[][] map;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,95 +30,93 @@ public class G3_1600_말이_되고픈_원숭이 {
         W = Integer.parseInt(st.nextToken());
         H = Integer.parseInt(st.nextToken());
 
-        world = new int[H][W];
+        map = new int[H][W];
 
         for(int i=0; i<H; i++) {
             st = new StringTokenizer(br.readLine(), " ");
 
             for(int j=0; j<W; j++)
-                world[i][j] = Integer.parseInt(st.nextToken());
+                map[i][j] = Integer.parseInt(st.nextToken());
         }
-
-        queue = new LinkedList<>();
-        visited = new boolean[H][W][K+1];
-
-        queue.offer(new Point(0, 0, 0, 0));
-        visited[0][0][0] = true;
-        result = 0;
 
         BFS();
 
-        System.out.println(result);
+        if(min == Integer.MAX_VALUE)
+            System.out.println(-1);
+        else
+            System.out.println(min);
     }
 
-    public static void BFS() {
+    static void BFS() {
+        Queue<Point> queue = new LinkedList<>();
+        queue.offer(new Point(0, 0, K, 0));
+
+        boolean[][][] visited = new boolean[H][W][K+1];
+        visited[0][0][K] = true;
+
         while(!queue.isEmpty()) {
             Point now = queue.poll();
 
-            if(now.x == H-1 && now.y == W-1) {
-                result = now.cnt;
-                return;
+            if(now.r == H-1 && now.c == W-1)
+                min = Math.min(min, now.cnt);
+
+            if(now.chance > 0) {
+                for(int d=0; d<8; d++) {
+                    int nextR = now.r + horsedr[d];
+                    int nextC = now.c + horsedc[d];
+
+                    if(outofmapCheck(nextR, nextC))
+                        continue;
+
+                    if(wallCheck(nextR, nextC))
+                        continue;
+
+                    if(visited[nextR][nextC][now.chance-1])
+                        continue;
+
+                    queue.offer(new Point(nextR, nextC, now.chance-1, now.cnt+1));
+                    visited[nextR][nextC][now.chance-1] = true;
+                }
             }
 
             for(int d=0; d<4; d++) {
-                int nextX = now.x + dxMonkey[d];
-                int nextY = now.y + dyMonkey[d];
+                int nextR = now.r + monkeydr[d];
+                int nextC = now.c + monkeydc[d];
 
-                if(outofmapCheck(nextX, nextY))
+                if(outofmapCheck(nextR, nextC))
                     continue;
 
-                if(obstacleCheck(nextX, nextY))
+                if(wallCheck(nextR, nextC))
                     continue;
 
-                if(visited[nextX][nextY][now.horsechance])
+                if(visited[nextR][nextC][now.chance])
                     continue;
 
-                queue.offer(new Point(nextX, nextY, now.cnt+1, now.horsechance));
-                visited[nextX][nextY][now.horsechance] = true;
-            }
-
-            if(now.horsechance < K) {
-                for(int d=0; d<8; d++) {
-                    int nextX = now.x + dxHorse[d];
-                    int nextY = now.y + dyHorse[d];
-
-                    if(outofmapCheck(nextX, nextY))
-                        continue;
-
-                    if(obstacleCheck(nextX, nextY))
-                        continue;
-
-                    if(visited[nextX][nextY][now.horsechance+1])
-                        continue;
-
-                    queue.offer(new Point(nextX, nextY, now.cnt+1, now.horsechance + 1));
-                    visited[nextX][nextY][now.horsechance + 1] = true;
-                }
+                queue.offer(new Point(nextR, nextC, now.chance, now.cnt+1));
+                visited[nextR][nextC][now.chance] = true;
             }
         }
-
-        result = -1;
     }
 
-    public static boolean outofmapCheck(int x, int y) {
-        return x<0 || y<0 || x>=H || y>=W;
+    static boolean outofmapCheck(int r, int c) {
+        return r<0 || c<0 || r>=H || c>=W;
     }
 
-    public static boolean obstacleCheck(int x, int y) {
-        return world[x][y] == 1;
+    static boolean wallCheck(int r, int c) {
+        return map[r][c] == 1;
     }
 
-    public static class Point {
-        int x;
-        int y;
+    static class Point {
+        int r;
+        int c;
+        int chance;
         int cnt;
-        int horsechance;
 
-        public Point(int x, int y, int cnt, int horsechance) {
-            this.x = x;
-            this.y = y;
+        public Point(int r, int c, int chance, int cnt) {
+            this.r = r;
+            this.c = c;
+            this.chance = chance;
             this.cnt = cnt;
-            this.horsechance = horsechance;
         }
     }
 }
