@@ -8,16 +8,14 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class G3_2146_다리_만들기 {
-    private static int N;
-    private static int min = Integer.MAX_VALUE;
+    static int N;
+    static int min = Integer.MAX_VALUE;
 
-    private static final int[] dx = {0, 0, 1, -1};
-    private static final int[] dy = {1, -1, 0, 0};
+    static final int[] dr = {0, 0, 1, -1};
+    static final int[] dc = {1, -1, 0, 0};
 
-    private static int[][] map;
-    private static boolean[][] visited;
-
-    private static Queue<Point> queue;
+    static int[][] map;
+    static boolean[][] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,29 +33,22 @@ public class G3_2146_다리_만들기 {
                 map[i][j] = Integer.parseInt(st.nextToken());
         }
 
-        // 대륙 구분
-        queue = new LinkedList<>();
-        int continentId = 2;
+        int color = 0;
 
         for(int i=0; i<N; i++) {
             for(int j=0; j<N; j++) {
-                if(map[i][j] == 1 && !visited[i][j]) {
+                if(!visited[i][j] && map[i][j] == 1) {
+                    color++;
                     visited[i][j] = true;
-                    queue.offer(new Point(i, j));
-                    map[i][j] = continentId;
-                    distinction(continentId++);
+                    initContinent(i, j, color);
                 }
             }
         }
 
-        // 다리 놓기
         for(int i=0; i<N; i++) {
             for(int j=0; j<N; j++) {
                 if(map[i][j] != 0) {
-                    visited = new boolean[N][N];
-                    visited[i][j] = true;
-                    queue.offer(new Point(i, j, 0));
-                    buildBridge(map[i][j]);
+                    connectContinent(i, j);
                 }
             }
         }
@@ -65,78 +56,87 @@ public class G3_2146_다리_만들기 {
         System.out.println(min);
     }
 
-    public static void distinction(int continentId) {
+    static void initContinent(int r, int c, int color) {
+        Queue<Point> queue = new LinkedList<>();
+        queue.offer(new Point(r, c));
+
         while(!queue.isEmpty()) {
             Point now = queue.poll();
+            map[now.r][now.c] = color;
 
             for(int d=0; d<4; d++) {
-                int nextX = now.x + dx[d];
-                int nextY = now.y + dy[d];
+                int nextR = now.r + dr[d];
+                int nextC = now.c + dc[d];
 
-                if(outofmapCheck(nextX, nextY))
+                if(outofmapCheck(nextR, nextC))
                     continue;
 
-                if(oceanCheck(nextX, nextY))
+                if(oceanCheck(nextR, nextC))
                     continue;
 
-                if(visited[nextX][nextY])
+                if(visited[nextR][nextC])
                     continue;
 
-                queue.offer(new Point(nextX, nextY));
-                visited[nextX][nextY] = true;
-                map[nextX][nextY] = continentId;
+                queue.offer(new Point(nextR, nextC));
+                visited[nextR][nextC] = true;
             }
         }
     }
 
-    public static void buildBridge(int startcontinentid) {
+    static void connectContinent(int r, int c) {
+        Queue<Point> queue = new LinkedList<>();
+        queue.offer(new Point(r, c, 0));
+
+        visited = new boolean[N][N];
+        visited[r][c] = true;
+
         while(!queue.isEmpty()) {
             Point now = queue.poll();
 
+            if(map[now.r][now.c] != map[r][c] && !oceanCheck(now.r, now.c))
+                min = Math.min(min, now.dist-1);
+
             for(int d=0; d<4; d++) {
-                int nextX = now.x + dx[d];
-                int nextY = now.y + dy[d];
+                int nextR = now.r + dr[d];
+                int nextC = now.c + dc[d];
 
-                if(outofmapCheck(nextX, nextY))
+                if(outofmapCheck(nextR, nextC))
                     continue;
 
-                if(visited[nextX][nextY])
+                if(map[nextR][nextC] == map[r][c])
                     continue;
 
-                if(map[nextX][nextY] == startcontinentid)
+                if(visited[nextR][nextC])
                     continue;
 
-                if(!oceanCheck(nextX, nextY) && map[nextX][nextY] != startcontinentid)
-                    min = Math.min(min, now.cnt);
-
-                queue.offer(new Point(nextX, nextY, now.cnt+1));
-                visited[nextX][nextY] = true;
+                queue.offer(new Point(nextR, nextC, now.dist+1));
+                visited[nextR][nextC] = true;
             }
         }
     }
 
-    public static boolean outofmapCheck(int x, int y) {
-        return x < 0 || y < 0 || x >= N || y >= N;
+    static boolean outofmapCheck(int r, int c) {
+        return r < 0 || c < 0 || r >= N || c >= N;
     }
 
-    public static boolean oceanCheck(int x, int y) {
-        return map[x][y] == 0;
+    static boolean oceanCheck(int r, int c) {
+        return map[r][c] == 0;
     }
 
-    public static class Point {
-        int x;
-        int y;
-        int cnt;
+    static class Point {
+        int r;
+        int c;
+        int dist;
 
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
+        public Point(int r, int c) {
+            this.r = r;
+            this.c = c;
         }
 
-        public Point(int x, int y, int cnt) {
-            this.x = x;
-            this.y = y;
-            this.cnt = cnt;
+        public Point(int r, int c, int dist) {
+            this.r = r;
+            this.c = c;
+            this.dist = dist;
         }
     }
 }
