@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class 모의_SW_역량_테스트_무선_충전_박세윤 {
+public class 모의_SW_역량_테스트_5644_무선_충전_박세윤 {
     private static int M;
     private static int A;
     private static int charge;
