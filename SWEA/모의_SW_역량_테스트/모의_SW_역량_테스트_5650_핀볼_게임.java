@@ -3,7 +3,7 @@ package SWEA.모의_SW_역량_테스트;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class 모의_SW_역량_테스트_5650_핀볼_게임_박세윤 {
+public class 모의_SW_역량_테스트_5650_핀볼_게임 {
     private static int N;
     private static int sR;
     private static int sC;

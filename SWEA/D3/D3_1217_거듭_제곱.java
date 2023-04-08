@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class D3_1217_거듭_제곱_박세윤 {
+public class D3_1217_거듭_제곱 {
     private static int N;
     private static int M;
     private static long result;
