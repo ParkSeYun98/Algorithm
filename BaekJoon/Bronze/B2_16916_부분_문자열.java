@@ -19,7 +19,7 @@ public class B2_16916_부분_문자열 {
         int idx = 0;
 
         for(int i=1; i<pattern.length(); i++) {
-            while(idx<0 && pattern.charAt(i) != pattern.charAt(idx))
+            while(idx>0 && pattern.charAt(i) != pattern.charAt(idx))
                 idx = table[idx-1];
 
             if(pattern.charAt(i) == pattern.charAt(idx)) {
