@@ -10,6 +10,7 @@ public class G5_2096_내려가기 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
+
         int N = Integer.parseInt(br.readLine());
 
         int[][] stage = new int[N+1][4];
