@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class G4_21940_가운데에서_만나기 {
-
-
     static int N;
     static int M;
     static int K;
@@ -23,7 +21,7 @@ public class G4_21940_가운데에서_만나기 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        int INF = N*M+1;
+        int INF = 1_000_000_000;
 
         distance = new int[N+1][N+1];
         for(int i=1; i<=N; i++) {
@@ -40,8 +38,6 @@ public class G4_21940_가운데에서_만나기 {
             if(distance[A][B] > T)
                 distance[A][B] = T;
         }
-
-
 
         K = Integer.parseInt(br.readLine());
 
