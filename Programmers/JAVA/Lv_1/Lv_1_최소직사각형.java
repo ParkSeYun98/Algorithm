@@ -1,4 +1,4 @@
-package Programmers.Lv_1;
+package Programmers.JAVA.Lv_1;
 
 public class Lv_1_최소직사각형 {
     class Solution {

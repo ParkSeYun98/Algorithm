@@ -1,4 +1,4 @@
-package Programmers.Lv_0;
+package Programmers.JAVA.Lv_0;
 
 public class Lv_0_두_수의_연산값_비교하기 {
     class Solution {
