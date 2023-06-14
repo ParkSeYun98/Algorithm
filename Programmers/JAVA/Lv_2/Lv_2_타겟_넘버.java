@@ -2,9 +2,9 @@ package Programmers.JAVA.Lv_2;
 
 public class Lv_2_타겟_넘버 {
     class Solution {
-        static int cnt = 0;
+        int cnt = 0;
 
-        static int[] repository;
+        int[] repository;
 
         public int solution(int[] numbers, int target) {
             repository = new int[numbers.length];
