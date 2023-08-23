@@ -1,7 +1,5 @@
 package BaekJoon.Silver;
 
-import com.sun.corba.se.impl.legacy.connection.USLPort;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
