@@ -9,7 +9,7 @@ public class S5_7785_회사에_있는_사람 {
 
     private static int N;
 
-    private static Map<Integer, String> commutationLogMap = new HashMap<>();
+    private static Map<String, String> commutationLogMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,25 +20,20 @@ public class S5_7785_회사에_있는_사람 {
         for(int i=0; i<N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
 
-            String temp = st.nextToken();
+            String name = st.nextToken();
+            String status = st.nextToken();
 
-            if(st.nextToken().equals("enter")) {
-                commutationLogMap.put(i, temp);
-            }
-            else {
-                for (int k=commutationLogMap.size()-1; k>=0; k--) {
-                    if(commutationLogMap.get(k).equals(temp))
-                        commutationLogMap.remove(k);
-                }
-            }
+            if(commutationLogMap.containsKey(name))
+                commutationLogMap.remove(name);
+            else
+                commutationLogMap.put(name, status);
         }
 
-        List<Map.Entry<Integer, String>> entryList = new LinkedList<>(commutationLogMap.entrySet());
+        List<String> commutationLogList = new ArrayList<>(commutationLogMap.keySet());
 
-        entryList.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
+        Collections.sort(commutationLogList, Collections.reverseOrder());
 
-        for(Map.Entry<Integer, String> entry : entryList)
-            System.out.println(entry.getValue());
-
+        for (String commutationLog : commutationLogList)
+            System.out.println(commutationLog);
     }
 }
