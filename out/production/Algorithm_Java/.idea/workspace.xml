@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22d6dac0-9839-4928-951b-96edd88f0c8d" name="Changes" comment="" />
+    <list default="true" id="a99f74cd-7614-47d9-b266-e0954ab204f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/BaekJoon/Gold/G5_15591_MooTube.java" beforeDir="false" afterPath="$PROJECT_DIR$/BaekJoon/Gold/G5_15591_MooTube.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +26,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2UWiZzWufbq9mbB3pTmOZ1CoxtX" />
+  <component name="ProjectId" id="2SBhDN4ESmkB3yOdoKUOS6l9rTD" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -40,31 +42,50 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/OneDrive/바탕 화면/Algorithm/Algorithm_Java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SSAFY/Desktop/Algorithm&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.25382262&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="22d6dac0-9839-4928-951b-96edd88f0c8d" name="Changes" comment="" />
-      <created>1693061796289</created>
+      <changelist id="a99f74cd-7614-47d9-b266-e0954ab204f2" name="Changes" comment="" />
+      <created>1688625760350</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1693061796289</updated>
-      <workItem from="1693061797366" duration="644000" />
-      <workItem from="1693143453352" duration="845000" />
-      <workItem from="1693146136859" duration="592000" />
-      <workItem from="1693229963059" duration="663000" />
+      <updated>1688625760350</updated>
+      <workItem from="1688625761335" duration="134000" />
+      <workItem from="1688625903598" duration="1583000" />
+      <workItem from="1688687921403" duration="91000" />
+      <workItem from="1688688021764" duration="359000" />
+      <workItem from="1688688392070" duration="636000" />
+      <workItem from="1688689044129" duration="34000" />
+      <workItem from="1688689361974" duration="2237000" />
+      <workItem from="1689128717288" duration="62000" />
+      <workItem from="1692773217678" duration="5251000" />
+      <workItem from="1692835103751" duration="4907000" />
+      <workItem from="1692920609176" duration="1580000" />
+      <workItem from="1692925750519" duration="2342000" />
+      <workItem from="1693180519066" duration="139000" />
+      <workItem from="1693191706357" duration="6329000" />
+      <workItem from="1693274685912" duration="1193000" />
+      <workItem from="1693355195200" duration="3682000" />
+      <workItem from="1693442981920" duration="536000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
