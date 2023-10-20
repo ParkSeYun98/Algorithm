@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class G3_우주_탐사선_17182 {
+public class G3_17182_우주_탐사선 {
     static int N;
     static int K;
     static int min = Integer.MAX_VALUE;
