@@ -1,3 +1,8 @@
+/*
+* Memory : 296312 KB
+* Time : 4304 ms
+* */
+
 package BaekJoon.Gold;
 
 import java.io.BufferedReader;
