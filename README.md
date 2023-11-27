@@ -1,4 +1,4 @@
-# Algorithm_Java
+# Algorithm
 Algorithm Problem Solving with Java + SQL
 
 
