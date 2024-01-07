@@ -18,8 +18,8 @@ public class G2_16920_확장_게임 {
     private static int M;
     private static int P;
 
-    private static int[] dr = {0, 0, 1, -1};
-    private static int[] dc = {1, -1, 0, 0};
+    private static final int[] dr = {0, 0, 1, -1};
+    private static final int[] dc = {1, -1, 0, 0};
     private static int[] ability;
 
     private static char[][] map;
