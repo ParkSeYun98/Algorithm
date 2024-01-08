@@ -74,13 +74,6 @@ public class G2_16920_확장_게임 {
 
         for(int i=1; i<cntArr.length; i++)
             System.out.print(cntArr[i] + " ");
-
-//        for(int i=0; i<N; i++) {
-//            for(int j=0; j<M; j++) {
-//                System.out.print(map[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
     }
 
     public static void BFS() {
