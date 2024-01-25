@@ -2,14 +2,14 @@
 * Memory : 19540 KB
 * Time : 122 ms
 * */
-package SWEA.D3;
+package SWEA.D2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class D3_12712_파리퇴치3 {
+public class D2_12712_파리퇴치3 {
 
     static int N;
     static int M;
