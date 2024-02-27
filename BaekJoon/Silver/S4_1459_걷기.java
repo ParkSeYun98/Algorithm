@@ -1,33 +1,18 @@
+/*
+* Memory : 11544 KB
+* Time : 80 ms
+* */
+
 package BaekJoon.Silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class S4_1459_걷기 {
 
-    static final int MAXX = 1_000_000_000;
-    static final int MAXY = 1_000_000_000;
-
     static int X, Y, W, S;
-
-    static int[] dr = {0, 0, 1, -1, 1, 1, -1, -1};
-    static int[] dc = {1, -1, 0, 0, 1, -1, 1, -1};
-
-    static class Point {
-        int r;
-        int c;
-        int time;
-
-        public Point(int r, int c, int time) {
-            this.r = r;
-            this.c = c;
-            this.time = time;
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
