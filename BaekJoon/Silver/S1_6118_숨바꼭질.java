@@ -1,3 +1,8 @@
+/*
+* Memory : 31464 KB
+* Time : 348 ms
+* */
+
 package BaekJoon.Silver;
 
 import java.io.BufferedReader;
