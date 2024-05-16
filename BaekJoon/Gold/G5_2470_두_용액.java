@@ -3,7 +3,7 @@
 * Time : 300 ms
 * */
 
-package BaekJoon;
+package BaekJoon.Gold;
 
 import java.io.BufferedReader;
 import java.io.IOException;
