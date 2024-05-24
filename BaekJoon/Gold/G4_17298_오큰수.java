@@ -37,7 +37,11 @@ public class G4_17298_오큰수 {
         while(!stack.isEmpty())
             arr[stack.pop()] = -1;
 
-        for(int i=0; i<arr.length; i++)
-            System.out.print(arr[i] + " ");
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < N; i++)
+            sb.append(arr[i]).append(' ');
+
+        System.out.println(sb);
     }
 }
