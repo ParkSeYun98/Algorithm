@@ -40,7 +40,7 @@ public class B3_2720_세탁소_사장_동혁 {
                 C %= 5;
             }
             else {
-                Penny += C/1;
+                Penny += C;
                 C %= 1;
             }
         }
