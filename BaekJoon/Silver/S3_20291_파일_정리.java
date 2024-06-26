@@ -12,16 +12,6 @@ public class S3_20291_파일_정리 {
     static Map<String, Integer> map;
     static List<String> list;
 
-    static class file {
-        String name;
-        String type;
-
-        public file(String name, String type) {
-            this.name = name;
-            this.type = type;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
