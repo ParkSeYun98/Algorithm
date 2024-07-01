@@ -21,6 +21,7 @@ public class S3_18310_안테나 {
         place = new int[N];
 
         st = new StringTokenizer(br.readLine(), " ");
+
         for(int i=0; i<N; i++)
             place[i] = Integer.parseInt(st.nextToken());
 
