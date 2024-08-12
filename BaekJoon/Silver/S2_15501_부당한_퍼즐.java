@@ -3,60 +3,51 @@ package BaekJoon.Silver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class S2_15501_부당한_퍼즐 {
 
-    static int n;
-
-    static List<Integer> listA, listB;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
 
-        n = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
 
-        listA = new ArrayList<>();
-        listB = new ArrayList<>();
+        int[] input = new int[N];
+        int[] output = new int[N];
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for(int i=0; i<n; i++)
-            listA.add(Integer.parseInt(st.nextToken()));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for(int i=0; i<N; i++)
+            input[i] = Integer.parseInt(st.nextToken());
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for(int i=0; i<n; i++)
-            listB.add(Integer.parseInt(st.nextToken()));
+        st = new StringTokenizer(br.readLine());
+        for(int i=0;i<N;i++)
+            output[i] = Integer.parseInt(st.nextToken());
 
-        boolean flagA = false;
-        boolean flagB = false;
+        boolean flagA = true, flagB = true;
 
-        for(int i=0; i<n; i++) {
-            if(listA.get(0) != listB.get(i))
+        for(int idx=0; idx<N; idx++){
+            if(input[0] != output[idx])
                 continue;
 
-            for(int j=0; j<n; j++) {
-                if(listA.get(j) == listB.get((i+j)%4))
-                    continue;
-
-                flagA = true;
+            for(int i=0; i<N; i++){
+                if(input[i]==output[(idx+i)%N]) continue;
+                flagA = false;
                 break;
             }
 
-            for(int j=0; j<n; j++) {
-                if(listA.get(j) == listB.get((n+i-j)%n))
-                    continue;
-
-                flagB = true;
+            for(int i=0; i<N; i++){
+                if(input[i] == output[(idx+N-i)%N]) continue;
+                flagB = false;
                 break;
             }
 
-            if(flagA && flagB)
-                System.out.println("bad puzzle");
-            else
+            if(flagA || flagB)
                 System.out.println("good puzzle");
+            else
+                System.out.println("bad puzzle");
+
+            return;
         }
     }
 }
