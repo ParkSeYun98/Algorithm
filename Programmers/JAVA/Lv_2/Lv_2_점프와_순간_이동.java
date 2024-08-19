@@ -13,7 +13,6 @@ public class Lv_2_점프와_순간_이동 {
                 battery++;
                 n--;
             }
-
         }
 
         return battery;
