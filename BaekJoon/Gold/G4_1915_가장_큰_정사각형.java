@@ -20,7 +20,6 @@ public class G4_1915_가장_큰_정사각형 {
         m = Integer.parseInt(st.nextToken());
 
         int max = 0;
-
         arr = new int[n+1][m+1];
 
         for(int i=1; i<=n; i++) {
