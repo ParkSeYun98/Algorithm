@@ -68,6 +68,7 @@ public class G5_16928_뱀과_사다리_게임 {
                 return;
             }
 
+
             for(int d=1; d<=6; d++) {
                 int next = game.now + d;
 
