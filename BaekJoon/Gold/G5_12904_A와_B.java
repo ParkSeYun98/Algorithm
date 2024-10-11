@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 
 public class G5_12904_A와_B {
 
-    static boolean flag;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
