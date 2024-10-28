@@ -20,8 +20,6 @@ public class B3_9094_수학적_호기심 {
 
             program(n, m);
         }
-
-
     }
 
     static void program(int n, int m) {
