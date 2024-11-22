@@ -28,32 +28,27 @@ public class S4_28278_스택_2 {
                 case 1:
                     int X = Integer.parseInt(st.nextToken());
                     stack.push(X);
-
                     break;
                 case 2:
                     if(stack.isEmpty())
                         sb.append(-1).append("\n");
                     else
                         sb.append(stack.pop()).append("\n");
-
                     break;
                 case 3:
                     sb.append(stack.size()).append("\n");
-
                     break;
                 case 4:
                     if(stack.isEmpty())
                         sb.append(1).append("\n");
                     else
                         sb.append(0).append("\n");
-
                     break;
                 case 5:
                     if(stack.isEmpty())
                         sb.append(-1).append("\n");
                     else
                         sb.append(stack.peek()).append("\n");
-
                     break;
                 default:
                     break;
