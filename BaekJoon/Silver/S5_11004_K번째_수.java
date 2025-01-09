@@ -7,77 +7,73 @@ import java.util.StringTokenizer;
 
 public class S5_11004_K번째_수 {
 
-    static int N, K;
-
-    static int[] arr;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
         st = new StringTokenizer(br.readLine(), " ");
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
 
-        arr = new int[N];
+        int[] arr = new int[N];
 
         st = new StringTokenizer(br.readLine(), " ");
         for(int i=0; i<N; i++)
             arr[i] = Integer.parseInt(st.nextToken());
 
-        quickSort(0, N-1, K-1);
+        quickSort(arr, 0, N-1, K-1);
+
         System.out.println(arr[K-1]);
     }
 
-    static void quickSort(int L, int R, int K) {
-        if(L >= R)
-            return;
+    public static void quickSort(int[] arr,int start, int end, int K) {
+        if(start < end) {
+            int pivot = partition(arr, start, end);
 
-        int pivot = partition(L, R);
-
-        // 최초의 pivot은 0으로 두었다.
-        // pivot을 기준으로 왼쪽은 무조건 작은 수가 존재하고, 오른쪽은 큰 수가 존재한다.
-        // pivot이 우리가 구해야 하는 K값일 때는 더 이상 알고리즘을 진행하지 않아도 된다는 뜻이다.
-        // pivot이 구해야하는 수 K값보다 큰 경우, 즉 K가 왼쪽에 있기에 오른쪽은 더 이상 정렬하지 않아도 된다.
-        // pivot이 구해야 하는 수 K값보다 작은 경우, K가 오른쪽에 위치하므로, 왼쪽은 더 이상 정렬하지 않아도 된다.
-        if(pivot == K)
-            return;
-        else if(pivot > K)
-            quickSort(L, pivot-1, K);
-        else
-            quickSort(pivot+1, R, K);
+            if(pivot == K)
+                return;
+            else if(K < pivot)
+                quickSort(arr, start,pivot-1, K);
+            else
+                quickSort(arr,pivot+1, end, K);
+        }
     }
 
-    static int partition(int L, int R) {
-        int mid = (L+R) / 2;
+    public static int partition(int[] arr, int start, int end) {
+        if(start+1 == end) {
+            if(arr[start] > arr[end])
+                swap(arr, start, end);
 
-        swap(mid, L);
+            return end;
+        }
+        int mid = (start+end) / 2;
 
-        int pivot = arr[L];
-        int i = L;
-        int j = R;
+        swap(arr, start, mid);
 
-        while(i<j) {
-            while(pivot < arr[j])
-                j--;
+        int pivot = arr[start];
+        int left = start+1;
+        int right = end;
 
-            while(i<j && pivot>=arr[i])
-                i++;
+        while(left <= right) {
+            while(pivot<arr[right] && right>0)
+                right--;
 
-            swap(i, j);
+            while(pivot>arr[left] && left<arr.length-1)
+                left++;
+
+            if(left <= right)
+                swap(arr, left++, right--);
         }
 
-        arr[L] = arr[i];
-        arr[i] = pivot;
+        arr[start] = arr[right];
+        arr[right] = pivot;
 
-        int newPivot = i;
-
-        return i;
+        return right;
     }
 
-    static void swap(int L, int R) {
-        int temp = arr[L];
-        arr[L] = arr[R];
-        arr[R] = temp;
+    public static void swap(int[] A, int start, int end) {
+        int temp = A[end];
+        A[end] = A[start];
+        A[start] = temp;
     }
 }
