@@ -54,9 +54,11 @@ public class S2_24479_알고리즘_수업_깊이_우선_탐색_1 {
 
     static void DFS(int start) {
         for(int i=0; i<graph[start].size(); i++) {
-            if(visited[graph[start].get(i)] == 0) {
-                visited[graph[start].get(i)] = order++;
-                DFS(graph[start].get(i));
+            int now = graph[start].get(i);
+
+            if(visited[now] == 0) {
+                visited[now] = order++;
+                DFS(now);
             }
         }
     }
