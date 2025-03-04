@@ -18,6 +18,7 @@ public class S1_1325_효율적인_해킹 {
         StringTokenizer st;
 
         st = new StringTokenizer(br.readLine(), " ");
+
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
