@@ -11,8 +11,6 @@ public class S1_1325_효율적인_해킹 {
 
     static int[] cntArr;
 
-    static List<Integer> maxIdxList;
-
     static List<Integer>[] list;
 
     public static void main(String[] args) throws IOException {
@@ -38,15 +36,12 @@ public class S1_1325_효율적인_해킹 {
 
         max = Integer.MIN_VALUE;
         cntArr = new int[N+1];
-        maxIdxList = new ArrayList<>();
 
         for(int i=1; i<=N; i++)
             BFS(i);
 
-        for(int i=1; i<=N; i++) {
-            if(max < cntArr[i])
-                max = cntArr[i];
-        }
+        for(int i=1; i<=N; i++)
+            max = Math.max(max, cntArr[i]);
 
         StringBuilder sb = new StringBuilder();
 
