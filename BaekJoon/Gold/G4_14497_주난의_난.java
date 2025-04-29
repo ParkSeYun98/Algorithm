@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class G4_144987_주난의_난 {
+public class G4_14497_주난의_난 {
 
     static int N, M, x1, y1, x2, y2;
 
