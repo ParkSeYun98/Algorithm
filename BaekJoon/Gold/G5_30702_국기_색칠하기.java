@@ -9,115 +9,86 @@ import java.util.StringTokenizer;
 
 public class G5_30702_국기_색칠하기 {
 
+    static String[][] A, B;
     static int N, M;
+    static boolean[][] visited;
 
-    static int[] dr = {0, 0, 1, -1};
-    static int[] dc = {1, -1, 0, 0};
-
-    static class Point {
-        int r;
-        int c;
-
-        public Point(int r, int c) {
-            this.r = r;
-            this.c = c;
-        }
-    }
+    static int[][] dir = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        st = new StringTokenizer(br.readLine(), " ");
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        char[][] mapA = new char[N][M];
-        char[][] mapB = new char[N][M];
-        int[][] checkMapA = new int[N][M];
-        int[][] checkMapB = new int[N][M];
+        A = new String[N][M];
+        B = new String[N][M];
+        visited = new boolean[N][M];
 
-        for(int i=0; i<N; i++) {
-            String input = br.readLine();
+        for (int i=0; i < N; i++) {
+            String[] str = br.readLine().split("");
 
-            for(int j=0; j<input.length(); j++)
-                mapA[i][j] = input.charAt(j);
+            for (int j=0; j < M; j++)
+                A[i][j] = str[j];
         }
 
-        for(int i=0; i<N; i++) {
-            String input = br.readLine();
+        for (int i=0; i<N; i++) {
+            String[] str = br.readLine().split("");
 
-            for(int j=0; j<input.length(); j++)
-                mapB[i][j] = input.charAt(j);
+            for (int j=0; j < M; j++)
+                B[i][j] = str[j];
         }
 
-        boolean[][] visitedA = new boolean[N][M];
-        boolean[][] visitedB = new boolean[N][M];
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<M; j++) {
+                if (!visited[i][j]) {
+                    Queue<int[]> queue = new LinkedList<>();
+                    dfs(i, j, A[i][j], queue);
 
-        int idx1 = 1;
-        int idx2 = 1;
-
-        for(int i=0; i<N; i++) {
-            for(int j=0; j<M; j++) {
-                if(!visitedA[i][j])
-                    BFS(mapA, new Point(i, j), visitedA, idx1++, checkMapA);
-
-                if(!visitedB[i][j])
-                    BFS(mapB, new Point(i, j), visitedB, idx2++, checkMapB);
-            }
-        }
-
-        boolean flag = false;
-
-        outer : for(int i=0; i<N; i++) {
-            for(int j=0; j<M; j++) {
-                if(checkMapA[i][j] != checkMapB[i][j]) {
-                    flag = true;
-                    break outer;
+                    if (!check(queue)) {
+                        System.out.println("NO");
+                        return;
+                    }
                 }
             }
         }
 
-        if(flag)
-            System.out.println("NO");
-        else
-            System.out.println("YES");
+        System.out.println("YES");
     }
 
-    static void BFS(char[][] map, Point start, boolean[][] visited, int idx, int[][] checkMap) {
-        Queue<Point> queue = new LinkedList<>();
-        queue.offer(start);
+    public static void dfs(int x, int y, String target, Queue<int[]> queue) {
+        visited[x][y] = true;
+        queue.add(new int[]{x, y});
 
-        visited[start.r][start.c] = true;
+        for (int i=0; i < dir.length; i++) {
+            int x1 = x + dir[i][0];
+            int y1 = y + dir[i][1];
 
-        int num = map[start.r][start.c];
+            if (x1>=0 && y1 >=0 && x1 < N && y1 < M && !visited[x1][y1] && target.equals(A[x1][y1]))
+                dfs(x1, y1, target, queue);
 
-        checkMap[start.r][start.c] = idx;
-
-        while(!queue.isEmpty()) {
-            Point now = queue.poll();
-
-            for(int d=0; d<4; d++) {
-                int nextR = now.r + dr[d];
-                int nextC = now.c + dc[d];
-
-                if(outOfMapCheck(nextR, nextC))
-                    continue;
-
-                if(visited[nextR][nextC])
-                    continue;
-
-                if(num != map[nextR][nextC])
-                    continue;
-
-                queue.offer(new Point(nextR, nextC));
-                visited[nextR][nextC] = true;
-                checkMap[nextR][nextC] = idx;
-            }
         }
     }
 
-    static boolean outOfMapCheck(int r, int c) {
-        return r<0 || c<0 || r>=N || c>=M;
+    public static boolean check(Queue<int[]> queue) {
+        int[] num = queue.poll();
+        int x = num[0];
+        int y = num[1];
+
+        String target = B[x][y];
+
+        while (!queue.isEmpty()) {
+            num = queue.poll();
+            x = num[0];
+            y = num[1];
+
+            String s = B[x][y];
+
+            if (!target.equals(s))
+                return false;
+        }
+
+        return true;
     }
 }
