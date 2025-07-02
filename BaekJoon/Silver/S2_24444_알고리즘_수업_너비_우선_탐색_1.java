@@ -57,7 +57,6 @@ public class S2_24444_알고리즘_수업_너비_우선_탐색_1 {
             int now = queue.poll();
 
             List<Integer> tempList = list[now];
-
             Collections.sort(tempList);
 
             for(int i=0; i<tempList.size(); i++) {
