@@ -22,26 +22,27 @@ public class S3_20920_영단어_암기는_괴로워 {
         for(int i=0; i<N; i++) {
             String now = br.readLine();
 
-            if(now.length() >= M) {
-                if(!vocaMap.containsKey(now))
-                    vocaMap.put(now, 1);
-                else
-                    vocaMap.put(now, vocaMap.get(now)+1);
-            }
+            if(now.length() >= M)
+                vocaMap.put(now, vocaMap.getOrDefault(now, 0) + 1);
         }
 
-        List<Map.Entry<String, Integer>> vocaList = new ArrayList<>(vocaMap.entrySet());
+        List<String> vocaList = new ArrayList<>(vocaMap.keySet());
+
         vocaList.sort((o1, o2) -> {
-            if(!o1.getValue().equals(o2.getValue()))
-                return o2.getValue() - o1.getValue();
+            if(!vocaMap.get(o1).equals(vocaMap.get(o2)))
+                return vocaMap.get(o2) - vocaMap.get(o1);
 
-            if(o1.getKey().length() != o2.getKey().length())
-                return o2.getKey().length() - o1.getKey().length();
+            if(o1.length() != o2.length())
+                return o2.length() - o1.length();
 
-            return o1.getKey().compareTo(o2.getKey());
+            return o1.compareTo(o2);
         });
 
-        for (Map.Entry<String, Integer> entry : vocaList)
-            System.out.println(entry.getKey());
+        StringBuilder sb = new StringBuilder();
+
+        for (String now : vocaList)
+            sb.append(now).append("\n");
+
+        System.out.println(sb);
     }
 }
